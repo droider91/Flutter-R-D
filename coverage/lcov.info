@@ -1,0 +1,12 @@
+SF:lib\domain\usecase\get_note_list_case.dart
+DA:9,1
+DA:11,0
+DA:12,0
+LF:3
+LH:1
+end_of_record
+SF:lib\domain\entity\note_entity.dart
+DA:6,0
+LF:1
+LH:0
+end_of_record
