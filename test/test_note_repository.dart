@@ -1,12 +1,13 @@
 import 'package:dartz/dartz.dart';
-import 'package:flutter_boilerplate/domain/repository/note_repository.dart';
-import 'package:flutter_boilerplate/domain/usecase/get_note_list_case.dart';
+import 'package:flutter_boilerplate/domain/repository/notes/note_repository.dart';
+import 'package:flutter_boilerplate/domain/usecase/notes/get_note_list_case.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 
 class MockNoteRepository extends Mock implements NoteRepository {}
 
 void main() {
+  TestWidgetsFlutterBinding.ensureInitialized();
   late GetNotesListUseCase _getNotesListUseCase;
   late MockNoteRepository _mockNoteRepository;
   setUp(() {

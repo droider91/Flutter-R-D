@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
 
- class Error {
+class Errr {
+  String msg;
 
+  Errr({required this.msg});
 }

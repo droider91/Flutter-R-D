@@ -1,7 +1,10 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
-import '../home/home_screen.dart';
+import 'package:flutter/material.dart';
+
+import '../db_test/home_screen.dart';
+import '../home/dashboard.dart';
+import '../login/login.dart';
 
 class SplashScreen extends StatefulWidget {
   SplashScreen({Key? key}) : super(key: key);
@@ -26,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Timer(
         const Duration(seconds: 2),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen())));
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const DashboardScreen())));
   }
 }

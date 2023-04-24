@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/data/impl/note_repo_impl.dart';
-import 'package:flutter_boilerplate/domain/usecase/save_note_case.dart';
+import 'package:flutter_boilerplate/data/impl/note_repository_impl/note_repo_impl.dart';
+import 'package:flutter_boilerplate/domain/usecase/notes/get_note_list_case.dart';
+import 'package:flutter_boilerplate/domain/usecase/notes/save_note_case.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,7 +14,8 @@ class _HomeScreenState extends State<HomeScreen> {
   String noteToSave = '';
 
   void saveData(String note) {
-    SaveNotesListUseCase(NoteRepositoryImpl()).call(Params(note: note));
+    //SaveNotesListUseCase(NoteRepositoryImpl()).call(ParamsSaveNote(note: note));
+    GetNotesListUseCase(NoteRepositoryImpl()).call(Params(note: note));
   }
 
   @override
