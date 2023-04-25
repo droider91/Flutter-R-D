@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../db_test/home_screen.dart';
-import '../home/dashboard.dart';
+import '../drinks/dashboard.dart';
 import '../login/login.dart';
 
 class SplashScreen extends StatefulWidget {

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../selected_category/selected_category.dart';
 import 'bloc/category_bloc.dart';
 
 class CategoryListScreen extends StatefulWidget {
@@ -43,9 +44,7 @@ class _CategoryListState extends State<CategoryListScreen> {
             return Scaffold(
               body: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  if (state is CategoryListingState) {
-                    return card(state.list[index].strCategory, context);
-                  }
+                  return card(state.list[index].strCategory, context);
                 },
                 itemCount: state.list.length,
               ),
@@ -59,21 +58,36 @@ class _CategoryListState extends State<CategoryListScreen> {
     );
   }
 
-  Widget card(String title, BuildContext context) {
+  Widget card(
+    String title,
+    BuildContext context,
+  ) {
     return Card(
       elevation: 8.0,
-      margin: EdgeInsets.all(12.0),
+      margin: const EdgeInsets.all(12.0),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(3)),
       child: Column(
         children: [
-          SizedBox(
-            height: 50,
-            child: Center(
-              child: Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.w700,
+          InkWell(
+            hoverColor: Colors.lightBlueAccent,
+            focusColor: Colors.red,
+            onTap: () {
+              print(title);
+              Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          SelectedCategoryScreen(selectedCategory: title)));
+            },
+            child: SizedBox(
+              height: 50,
+              child: Center(
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 24.0,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ),
             ),

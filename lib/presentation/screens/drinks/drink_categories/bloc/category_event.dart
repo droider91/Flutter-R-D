@@ -14,3 +14,8 @@ class CategoryListedEvent extends CategoryEvent {
   @override
   List<Object?> get props => [];
 }
+
+class CategoryClickEvent extends CategoryEvent {
+  @override
+  List<Object?> get props => [];
+}

@@ -6,7 +6,6 @@ class Categories {
      required this.drinks,
   });
 
-
   Categories.fromJson(dynamic json) {
     if (json['drinks'] != null) {
       drinks = [];

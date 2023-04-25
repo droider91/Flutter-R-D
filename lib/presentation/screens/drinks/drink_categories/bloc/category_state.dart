@@ -6,21 +6,17 @@ abstract class CategoryState extends Equatable {
   List<Object?> get props => [];
 }
 
-class CategoryInitialState extends CategoryState {
-  @override
-  List<Object?> get props => [];
-}
+class CategoryInitialState extends CategoryState {}
 
-class CategoryLoadingState extends CategoryState {
-  @override
-  List<Object?> get props => [];
-}
+class CategoryLoadingState extends CategoryState {}
 
 class CategoryErrorState extends CategoryState {
   final String err;
 
   CategoryErrorState({required this.err});
 }
+
+class CategoryClickedState extends CategoryState {}
 
 class CategoryListingState extends CategoryState {
   final List<Drinks> list;

@@ -13,14 +13,14 @@ part 'category_state.dart';
 class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
   CategoryBloc() : super(CategoryInitialState()) {
     on<CategoryLoadingEvent>(categoryLoadingState);
-    on<CategoryListedEvent>(categoryListedEvent);
+    on<CategoryListedEvent>(categoryListedState);
+    on<CategoryClickEvent>(categoryClickState);
   }
 
   FutureOr<void> categoryLoadingState(
       CategoryLoadingEvent event, Emitter<CategoryState> emit) async {
     print("categoryLoadingState");
     emit(CategoryLoadingState());
-    Future.delayed(Duration(seconds: 2));
     print("categoryLoadingState: Delayed");
     var list = await CategoryUseCase(CategoryRepoImpl())
         .call(CategoryParams(categoryName: ""));
@@ -33,11 +33,17 @@ class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
     });
   }
 
-  FutureOr<void> categoryListedEvent(
+  FutureOr<void> categoryListedState(
       CategoryListedEvent event, Emitter<CategoryState> emit) async {
     var list = await CategoryUseCase(CategoryRepoImpl())
         .call(CategoryParams(categoryName: ""));
     list.fold((e) => emit(CategoryErrorState(err: e.msg)),
         (s) => emit(CategoryListingState(list: s.drinks)));
+  }
+
+  FutureOr<void> categoryClickState(
+      CategoryClickEvent event, Emitter<CategoryState> emit) {
+    emit(CategoryClickedState());
+    print("Category is clicked");
   }
 }

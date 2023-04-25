@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_boilerplate/presentation/screens/home/details/details.dart';
 
+import 'details/details.dart';
 import 'drink_categories/categories.dart';
 
 

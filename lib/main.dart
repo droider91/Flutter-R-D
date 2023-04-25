@@ -4,7 +4,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_boilerplate/data/impl/drink_category_repository_impl/entity/drinks/drink_model.dart';
 import 'package:flutter_boilerplate/presentation/screens/db_test/home_screen.dart';
-import 'package:flutter_boilerplate/presentation/screens/home/dashboard.dart';
+import 'package:flutter_boilerplate/presentation/screens/drinks/dashboard.dart';
 import 'package:flutter_boilerplate/presentation/screens/login/login.dart';
 
 import 'data/model/notes/note_model.dart';
