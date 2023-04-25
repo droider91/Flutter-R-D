@@ -44,7 +44,22 @@ class _CategoryListState extends State<CategoryListScreen> {
             return Scaffold(
               body: ListView.builder(
                 itemBuilder: (BuildContext context, int index) {
-                  return card(state.list[index].strCategory, context);
+                  return ListTile(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SelectedCategoryScreen(
+                                  selectedCategory:
+                                      state.list[index].strCategory)));
+                    },
+                    leading: const Icon(Icons.fastfood),
+                    title: Text(state.list[index].strCategory),
+                    trailing: const Icon(Icons.arrow_right),
+                    hoverColor: Colors.black12,
+                    selectedColor: Colors.indigoAccent,
+                    focusColor: Colors.deepOrangeAccent,
+                  );
                 },
                 itemCount: state.list.length,
               ),

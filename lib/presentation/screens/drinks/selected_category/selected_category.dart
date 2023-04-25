@@ -75,27 +75,49 @@ class _SelectedCategoryState extends State<SelectedCategoryScreen> {
                     Color((math.Random().nextDouble() * 0xFFFFFF).toInt())
                         .withOpacity(1.0),
               ),
-              body: GridView.count(
-                crossAxisCount: 3,
+              body: Column(
                 children: [
-                  ...state.selectedDrinkList.map((i) => Stack(
-                        alignment: Alignment.center,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: Card(child: Image.network(i.strDrinkThumb)),
-                          ),
-                          Center(
-                            widthFactor: double.maxFinite,
-                            child: Text(i.strDrink,
-                                maxLines: 2,
-                                style: const TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 16.0)),
-                          )
-                        ],
-                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                      print(value);
+                      selectedCategoryBloc
+                          .add(SearchInDrinksEvent(searchTerm: value));
+                    },
+                    decoration: const InputDecoration(
+                        labelText: 'Search', suffixIcon: Icon(Icons.search)),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      children: [
+                        ...state.selectedDrinkList.map((i) => Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Card(
+                                      child: Image.network(i.strDrinkThumb)),
+                                ),
+                                Center(
+                                  widthFactor: double.maxFinite,
+                                  child: Text(i.strDrink,
+                                      maxLines: 2,
+                                      style: const TextStyle(
+                                          color: Colors.white,
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.0)),
+                                )
+                              ],
+                            )),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             );

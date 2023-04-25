@@ -14,9 +14,12 @@ part 'selected_category_state.dart';
 
 class SelectedCategoryBloc
     extends Bloc<SelectedCategoryEvent, SelectedCategoryState> {
+  List<SelectedDrinks> _list = [];
+
   SelectedCategoryBloc() : super(SelectedCategoryInitial()) {
     on<SelectedCategoryLoadingEvent>(selectedCategoryLoadingEvent);
     on<SelectedCategoryListEvent>(selectedCategoryListEvent);
+    on<SearchInDrinksEvent>(searchInDrinksEvent);
   }
 
   FutureOr<void> selectedCategoryLoadingEvent(
@@ -30,10 +33,25 @@ class SelectedCategoryBloc
     selectedCategoryResponse.fold((err) {
       emit(SelectedCategoryErrorState(errMsg: err.msg));
     }, (success) {
+      _list = success.drinks;
       emit(SelectedCategoryListingState(selectedDrinkList: success.drinks));
     });
   }
 
   FutureOr<void> selectedCategoryListEvent(
       SelectedCategoryListEvent event, Emitter<SelectedCategoryState> emit) {}
+
+  FutureOr<void> searchInDrinksEvent(
+      SearchInDrinksEvent event, Emitter<SelectedCategoryState> emit) {
+    print("received list is: $_list");
+    if (event.searchTerm != '') {
+      var matchedList = _list
+          .where((element) => element.strDrink.contains(event.searchTerm))
+          .toList();
+      emit(SelectedCategoryListingState(selectedDrinkList: matchedList));
+      print("filtered list is: $matchedList");
+    } else {
+      emit(SelectedCategoryListingState(selectedDrinkList: _list));
+    }
+  }
 }

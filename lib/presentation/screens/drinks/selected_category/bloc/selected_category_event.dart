@@ -21,3 +21,12 @@ class SelectedCategoryClickEvent extends SelectedCategoryEvent {
   @override
   List<Object?> get props => [];
 }
+
+class SearchInDrinksEvent extends SelectedCategoryEvent {
+  final String searchTerm;
+
+  SearchInDrinksEvent({required this.searchTerm});
+
+  @override
+  List<Object?> get props => [];
+}
